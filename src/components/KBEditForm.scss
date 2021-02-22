@@ -1,0 +1,110 @@
+.ReactModal__Content{
+    overflow: hidden !important;
+    margin: auto;
+    width: 90vw;
+    height: 90vh;
+    padding: 0 !important;
+    border-radius: 20px !important;
+    .ck{
+        height: 200px;
+    }
+    .modal-overlay{
+        z-index: 5px;
+    }
+    .tppedia-form{
+        background: #ffffff;
+        .form-title{
+            padding: 28px 0;
+            height: 90px;
+            width: 100%;
+            text-align: center;
+            background: #3E2E87;
+            span{
+                color: #ffffff; 
+                font-size: 22px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                line-height: 30px;
+            }
+        }
+        .article-form{
+            padding: 12px 40px;
+            .form-control{
+                font-size: 12px;
+            }
+            .input-form{
+                padding: 20px 20px;
+                display: flex;
+                border-radius: 12px;
+                label{
+                    line-height: 20px;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .form-control{
+                    height: auto;
+                }
+
+                .form{
+                    padding: 0 20px;
+                    width: 100%;
+                }
+            }
+        }
+        .forms-action{
+            text-align: center;
+            .submit-btn{
+                background: #3E2E87;
+                font-size: 12px;
+                width: 100px;
+                height: 36px;
+                color: #ffffff;
+                border-radius: 8px;
+                font-weight: 400;
+                line-height: 11.72px;
+                border: none;
+            }
+            .cancel-btn{
+                background: #E51E5C;
+                font-size: 12px;
+                width: 100px;
+                height: 36px;
+                color: #ffffff;
+                border-radius: 8px;
+                font-weight: 400;
+                line-height: 11.72px;
+                border: none;
+            }
+        }
+    }
+}
+.articletext{
+    height: 550px !important;
+    padding: 0 40px !important;
+}
+
+.ck-content{
+    height: 450px !important;
+    font-size: 12px;
+}
+.fa-edit{
+    color: #3E2E87;
+}
+.fa-trash-alt:before{
+    color: red;
+}
+
+.recent-body:hover{
+    background-color: #7356FB;
+    border-radius: 8px;
+    box-shadow: 8px 6px 8px 2px rgba(0, 0, 0, 0.1);
+    span{
+        color: #ffffff !important;
+    }
+    p{
+        color: #ffffff !important;
+    }
+}
+.ql-editor.ql-blank{
+    height: 450px;
+}

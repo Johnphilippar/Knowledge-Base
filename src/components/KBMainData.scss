@@ -1,0 +1,74 @@
+.tppedia-container-data{
+    height: 93vh;
+    overflow-y: auto;
+    .tppedia-main-body-data{
+        display: block;
+        padding: 20px;
+        z-index: 2;
+        .details{
+            display: flex;
+            img{
+                object-fit: contain;
+                height: 180px;
+                width: 500px;
+            }
+            .user-data{
+                text-align: left;
+                width: 100%;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+                background: white;
+                background: linear-gradient(
+                    to right bottom, 
+                    rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+                padding: 20px;
+                border-radius: 8px;
+                span{
+                    margin: 0 24px;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+            .item-title{
+                span{
+                    margin: 0;
+                    font-size: 20px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    line-height: 26px;
+                }
+            }
+                .btn{
+                    font-size: 20px;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    float: right;
+                }
+            
+        }
+        .description{
+            margin-top: 40px;
+            text-align: left;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #ffffff;
+            background: linear-gradient(
+                to right bottom, 
+                rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+            border-radius: 8px;
+            min-height: calc(100vh - 180px - 50px - 40px);
+            word-wrap: break-word;
+            img{
+                height: 300px;
+                width: 500px;
+                padding: 0 12px;
+            }
+        }
+    }
+}
+
+.fa-edit:before{
+    color: #3E2E87;
+}
