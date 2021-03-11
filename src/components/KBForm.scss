@@ -1,8 +1,8 @@
 .ReactModal__Content{
-    overflow: hidden !important;
+    overflow-y: auto !important;
     margin: auto;
     width: 90vw;
-    height: 90vh;
+    height: 88vh;
     padding: 0 !important;
     border-radius: 20px !important;
     .ck{
@@ -28,13 +28,12 @@
             }
         }
         .article-form{
-            padding: 12px 40px;
+            padding: 24px 60px;
             .form-control{
                 font-size: 12px;
                 width: 300px;
             }
-            .input-form{
-                padding: 20px 20px;
+            .input-title{
                 display: flex;
                 border-radius: 12px;
                 label{
@@ -46,14 +45,21 @@
                     height: auto;
                 }
 
-                .form{
-                    padding: 0 20px;
+                .add-form-title{
+                    padding: 12px 0;
                     width: 100%;
+                }
+            }
+            .input-form{
+                label{
+                    font-weight: 600;
+                    font-size: 14px;
                 }
             }
         }
         .forms-action{
             text-align: center;
+            padding: 20px 0;
             .submit-btn{
                 background: #3E2E87;
                 font-size: 12px;
@@ -79,13 +85,9 @@
         }
     }
 }
-.articletext{
-    height: 550px !important;
-    padding: 0 40px !important;
-}
 
 .ck-content{
-    height: 450px !important;
+    height: calc(100vh - 200px);
     font-size: 12px;
 }
 
@@ -104,12 +106,10 @@
         color: #ffffff !important;
     }
 }
-.ql-editor.ql-blank{
-    height: 450px;
+.ql-editor,.ql-blank{
+    height: calc(100vh - 500px) !important;
 }
-
 .ql-editor{
-    height: 450px;
     overflow-y: auto;
     p{
         height: auto;

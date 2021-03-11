@@ -166,7 +166,7 @@
 
 
 
-li:hover{
+.inactive:hover{
     background-color: #d7ceff !important;
     border-radius: 8px;
     box-shadow: 8px 6px 8px 2px rgba(0, 0, 0, 0.25);
@@ -203,4 +203,40 @@ li:hover{
 
 .fas.fa-plus{
     color: #ffffff !important;
+}
+
+
+
+@media screen and (min-width:1300px) and (max-width: 1400px){
+    
+        .tppedia-container-searchpage{
+            .tppedia-header-searchpage{
+
+            }
+            .tppedia-main-body-searchpage{
+                .tppedia-search-list{
+                    width: 364px;
+                    .tppedia-item{
+                        width: 341px !important;
+                        ul{
+                            .tppedia-search{
+                                .form-control{
+                                    width: 150px;
+                                }
+                            }
+                            .active{
+                                width: 290px;
+                            }
+                            .inactive{
+                                width: 290px;
+                            }
+                        }
+                    }
+                }
+                .tppedia-feature-item-body{
+                    width: 73% !important;
+                }
+            }
+        }
+    
 }

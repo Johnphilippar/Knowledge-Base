@@ -47,7 +47,7 @@
             
         }
         .description{
-            margin-top: 40px;
+            margin-top: 20px;
             text-align: left;
             letter-spacing: 0.5px;
             font-size: 12px;
@@ -58,12 +58,14 @@
                 to right bottom, 
                 rgba(255,255,255,0.7),rgba(255,255,255,0.3));
             border-radius: 8px;
-            min-height: calc(100vh - 180px - 50px - 40px);
+            min-height: calc(100vh - 500px);
             word-wrap: break-word;
+            p{
+                font-weight: 300 !important;
+            }
             img{
-                height: 300px;
-                width: 500px;
-                padding: 0 12px;
+                height: 400px;
+                width: 600px;
             }
         }
     }

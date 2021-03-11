@@ -49,36 +49,22 @@ export default function TPPediaForm(props) {
     return (
         <>
 
-            <div style={{ zIndex: '100' }} className="tppedia-form">
+            <div style={{ zIndex: '100' }} className="tppedia-edit-form">
                 <div className="form-title">
                     <span>WFM Knowledge Base Form</span>
                 </div>
                 {
                     console.log(props)
                 }
-                <form className="article-form" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="input-form">
-                        <div className="form">
+                <form className="article-edit-form" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="edit-title">
+                        <div className="title-edit-form">
                             <label>Article Title :</label>
                             <input className="form-control" type="text" name="article_title" defaultValue={props.artEdit.ARTICLE_TITLE} ref={register} />
                         </div>
-                        {/* {errors.position && <p>{errors.position.message}</p>} */}
-
-                        {/* <div className="form">
-                            <label>Date Submitted :</label>
-                            <input className="form-control" type="date" name="article_date_submitted" ref={register} />
-                        </div> */}
                     </div>
-                    <div className="input-form articletext" style={{ marginBottom: '0', display: 'block' }}>
+                    <div className="edit-description articletext" style={{ marginBottom: '0', display: 'contents' }}>
                         <label>Article Description :</label>
-                        {/* <CKEditor
-                            editor={ClassicEditor}
-                            data={articleText}
-                            onChange={(event, editor) => {
-                                const data = editor.getData()
-                                setArticleText(data)
-                            }}
-                        /> */}
                         <EditorToolbar />
                         <input type="text"
                             name="article_description"
@@ -94,7 +80,7 @@ export default function TPPediaForm(props) {
                             formats={formats}
                         />
                     </div>
-                    <div className="forms-action">
+                    <div className="edit-form-action">
                         <button className="cancel-btn" style={{ marginRight: "12px" }} onClick={refreshPage} type="button">
                             Close
                     </button>

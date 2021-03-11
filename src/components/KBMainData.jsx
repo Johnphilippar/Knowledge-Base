@@ -1,16 +1,18 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './KBMainData.scss';
 import KBFormEdit from './KBEditForm';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-import * as API from '../API/knowledgeBaseAPI';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import * as KbAPI from '../API/knowledgeBaseAPI';
+import * as commentAPI from '../API/CommentAPI';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
+import Comment from './Comment';
 
 
 toast.configure()
@@ -21,7 +23,6 @@ export default function TPPediaData(props) {
     const [editArticleModal, setEditArticleModal] = useState(false)
 
     const [articleDescription, setArticleDescription] = useState('');
-    
 
     const closeEditModal = () => {
         setEditArticleModal(false)
@@ -34,14 +35,13 @@ export default function TPPediaData(props) {
     }
 
     const getArticleDescriptionData = (param) => {
-        API.getArticleDescription({ KnowledgeBaseNumber: param }).then(res => {
+        KbAPI.getArticleDescription({ KnowledgeBaseNumber: param }).then(res => {
             setArticleDescription(res.data)
-            console.log(res);
+            console.log(res.data);
         }).catch(e => {
             console.log(e.message);
         })
     }
-
 
     const deleteArticle = () => {
 
@@ -55,7 +55,7 @@ export default function TPPediaData(props) {
             buttons: [
                 {
                     label: 'Yes',
-                    onClick: () => (API.deleteArticle(data).then(res => {
+                    onClick: () => (KbAPI.deleteArticle(data).then(res => {
                         refreshPage()
                     }))
                 },
@@ -68,7 +68,7 @@ export default function TPPediaData(props) {
 
     useEffect(() => {
         getArticleDescriptionData()
-    },[])
+    }, [])
 
     return (
         <>
@@ -102,12 +102,13 @@ export default function TPPediaData(props) {
                             <Modal style={{ zIndex: '1000' }} isOpen={editArticleModal}>
                                 <KBFormEdit close={closeEditModal} artEdit={props.data} artDescEdit={props.article} postedUser={props.user} />
                             </Modal>
-                            
+
                         </div>
                     </div>
                     <div className="description">
                         <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.article) }}></p>
                     </div>
+                    <Comment getComment2={props.comment} getKbID={props.data?.KNOWLEDGE_BASE_ID}></Comment>
                 </div>
             </div>
         </>

@@ -1,8 +1,8 @@
 .ReactModal__Content{
-    overflow: hidden !important;
+    overflow-y: auto !important;
     margin: auto;
     width: 90vw;
-    height: 90vh;
+    height: 88vh;
     padding: 0 !important;
     border-radius: 20px !important;
     .ck{
@@ -11,7 +11,7 @@
     .modal-overlay{
         z-index: 5px;
     }
-    .tppedia-form{
+    .tppedia-edit-form{
         background: #ffffff;
         .form-title{
             padding: 28px 0;
@@ -27,32 +27,37 @@
                 line-height: 30px;
             }
         }
-        .article-form{
-            padding: 12px 40px;
+        .article-edit-form{
+            padding: 24px 60px;
             .form-control{
                 font-size: 12px;
             }
-            .input-form{
-                padding: 20px 20px;
+            .edit-title{
+                padding: 12px 0;
                 display: flex;
                 border-radius: 12px;
+                .title-edit-form{
+                    width: 100%;
+                    label{
+                        line-height: 20px;
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+                    .form-control{
+                        height: auto;
+                    }
+                }
+            }
+            .edit-description{
                 label{
-                    line-height: 20px;
                     font-weight: 600;
                     font-size: 14px;
                 }
-                .form-control{
-                    height: auto;
-                }
-
-                .form{
-                    padding: 0 20px;
-                    width: 100%;
-                }
             }
         }
-        .forms-action{
+        .edit-form-action{
             text-align: center;
+            padding: 20px 0;
             .submit-btn{
                 background: #3E2E87;
                 font-size: 12px;
@@ -78,13 +83,9 @@
         }
     }
 }
-.articletext{
-    height: 550px !important;
-    padding: 0 40px !important;
-}
 
 .ck-content{
-    height: 450px !important;
+    height: calc(100vh - 200px);
     font-size: 12px;
 }
 .fa-edit{
@@ -92,6 +93,20 @@
 }
 .fa-trash-alt:before{
     color: red;
+}
+
+.ql-editor,.ql-blank{
+    height: calc(100vh - 500px) !important;
+}
+.ql-editor{
+    overflow-y: auto;
+    p{
+        height: auto;
+    }
+    img{
+        height: 200px;
+        width: 500px;
+    }
 }
 
 .recent-body:hover{
@@ -104,7 +119,4 @@
     p{
         color: #ffffff !important;
     }
-}
-.ql-editor.ql-blank{
-    height: 450px;
 }

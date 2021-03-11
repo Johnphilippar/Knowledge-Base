@@ -26,10 +26,9 @@
   "configuration": {
     "BaseFolderName": "/knowledge-base",
     "AppId": "91E36CE8-2AF3-4152-A1E6-900DF6051C98",
-    "PortalGateWayAPI" : "https://mck-phpdev-01.teleperformanceusa.com:2022/portalgateway/api",
-    "KnowledgeBaseAPI" : "https://mck-phpdev-01.teleperformanceusa.com:2022/Knowledge-base-api/api"
+    "PortalGateWayAPI": "https://localhost:44372/api",
+    "KnowledgeBaseAPI": "https://localhost:44372/api"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

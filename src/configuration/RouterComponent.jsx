@@ -14,7 +14,7 @@ class RouterComponent extends Component {
                 <Router>
                     <div className="main">
                         <Switch>
-                            <ProtectedRoute exact strict path={packageConfig.configuration.BaseFolderName + "/"} component={KBComponent} />
+                            <Route exact component={KBComponent} />
                             <Route path={"*"} component={Error401} />
                         </Switch>
                     </div>

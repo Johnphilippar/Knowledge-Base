@@ -8,10 +8,11 @@ import tpIcon from '../image/tp-logo.png';
 import KBMainData from '../components/KBMainData';
 import Modal from 'react-modal';
 import KBForm from '../components/KBForm';
-import * as API from '../API/knowledgeBaseAPI';
+import * as KbAPI from '../API/knowledgeBaseAPI';
+import * as CommentAPI from '../API/CommentAPI';
 import DOMPurify from 'dompurify';
 import moment from 'moment';
-
+import Comment from '../components/Comment';
 Modal.setAppElement('#root');
 
 export default function KBSearchPage(props) {
@@ -26,9 +27,12 @@ export default function KBSearchPage(props) {
 
     const [searchItem, setSearchItem] = useState('');
 
+    const [empComments, setEmpComments] = useState([]);
+
     const articleItemClick = (index, param) => {
         setArrayIndex(index)
         getArticleDescriptionData(param);
+        getEmployeeComments(param)
     }
 
     const closeModal = () => {
@@ -36,26 +40,47 @@ export default function KBSearchPage(props) {
     }
 
     const getRecentUploadData = () => {
-        API.getRecentUpload().then(res => {
+        KbAPI.getRecentUpload().then(res => {
             setRecentUpload(res.data)
             getArticleDescriptionData(res.data[0].KNOWLEDGE_BASE_ID)
-            console.log(res.data)
+            getEmployeeComments(res.data[0].KNOWLEDGE_BASE_ID)
         }).catch(e => {
             console.log(e.message);
         })
     }
 
     const getArticleDescriptionData = (param) => {
-        API.getArticleDescription({ KnowledgeBaseNumber: param }).then(res => {
+        KbAPI.getArticleDescription({ KnowledgeBaseNumber: param }).then(res => {
             setArticleDescription(res.data)
         }).catch(e => {
             console.log(e.message);
         })
     }
 
+    const getEmployeeComments = (param) => {
+        CommentAPI.getComments({ KNOWLEDGE_BASE_ID: param }).then(res => {
+            setEmpComments(res.data)
+        }).catch(e => {
+            console.log(e.message);
+        })
+    }
+
+    const handleUpdate = (newValue) => {
+        setRecentUpload(newValue)
+    }
+
     useEffect(() => {
         getRecentUploadData()
     }, [])
+
+    const getArticleData = data => {
+        setRecentUpload([data, ...recentUpload])
+        getArticleDescriptionData(data.KNOWLEDGE_BASE_ID)
+        setArrayIndex(0);
+        console.log(data)
+    };
+
+
 
 
     return (
@@ -86,11 +111,11 @@ export default function KBSearchPage(props) {
                                         </button>
                                 }
                                 <Modal isOpen={addArticleModal}>
-                                    <KBForm close={closeModal} user={props.currentUser} />
+                                    <KBForm close={closeModal} updateList={data => getArticleData(data)} listState={recentUpload} user={props.currentUser} />
                                 </Modal>
                             </div>
                             {
-                                recentUpload && recentUpload.filter((obj) => {
+                                recentUpload && recentUpload?.filter((obj) => {
                                     if (searchItem == "") {
                                         return obj
                                     } else if (obj.ARTICLE_TITLE.toLowerCase().includes(searchItem.toLowerCase())) {
@@ -101,7 +126,7 @@ export default function KBSearchPage(props) {
                                         return obj
                                     }
                                 }).map((obj, i) =>
-                                    <li key={i} className={recentUpload[arrayIndex].KNOWLEDGE_BASE_ID == obj.KNOWLEDGE_BASE_ID ? "active" : ""} onClick={() => articleItemClick(i, obj.KNOWLEDGE_BASE_ID)}>
+                                    <li key={i} className={recentUpload[arrayIndex].KNOWLEDGE_BASE_ID == obj.KNOWLEDGE_BASE_ID ? "active" : "inactive"} onClick={() => articleItemClick(i, obj.KNOWLEDGE_BASE_ID)}>
                                         <div className="tppedia-item-title">
                                             <span className="item-title" >{obj.ARTICLE_TITLE}</span>
                                             <span>Posted By: <p>{obj.POSTED_BY}</p></span>
@@ -111,12 +136,11 @@ export default function KBSearchPage(props) {
                                     </li>
                                 )
                             }
-                            
                         </ul>
                     </div>
                 </div>
                 <div className="tppedia-feature-item-body">
-                    <KBMainData data={recentUpload[arrayIndex]} article={articleDescription} user={props.currentUser} />
+                    <KBMainData data={recentUpload[arrayIndex]} article={articleDescription} comment={empComments} user={props.currentUser} />
                 </div>
             </div>
         </div>
