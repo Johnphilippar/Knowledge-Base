@@ -19,7 +19,7 @@ export default function Comment(props) {
             KNOWLEDGE_BASE_ID: (props.getKbID),
             COMMENTS: data.emp_comment,
             // COMMENT_BY: props.user?.infoObject.given_name + (' ') + props.user?.infoObject.family_name
-            COMMENT_BY: 'JOHN PHILIP PAR',
+            COMMENT_BY: 'JOHN PHILIP PAR'
         }
         API.postComment(empCommentForm).then(res => {
             reset();

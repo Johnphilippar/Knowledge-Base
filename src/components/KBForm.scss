@@ -42,12 +42,81 @@
                     font-size: 14px;
                 }
                 .form-control{
-                    height: auto;
+                    height: 45px;
                 }
 
-                .add-form-title{
-                    padding: 12px 0;
+                .add-form{
                     width: 100%;
+                    padding: 12px 0;
+                }
+                .title{
+                    width: 40%;
+                    .form-control{
+                        width: 80%;
+                    }
+                }
+                .add-form-main-tags{
+                    width: 60%;
+                    padding: 12px 0;
+                }
+                .tags{
+                    display: flex;
+                    align-items: flex-start;
+                    border: 1px solid rgb(214, 216, 218);
+                    width: 100%;
+                    padding: 4px 20px 4px 20px;
+                    height: auto;
+                    input{
+                        flex: 1;
+                        border: none;
+                        height: 38px;
+                        font-size: 14px;
+                        padding: 4px 0 0 0;
+                        margin-left: 12px;
+                        border: 1px solid #d6d8da;
+                        text-align: center;
+                        border-radius: 6px;
+                        &:focus {
+                            outline: transparent;
+                        }
+                    }
+                    ul{
+                    padding: 0;
+                    display: flex;
+                    list-style-type: none;
+                    margin: 0;
+                    overflow-x: auto;
+                        li{
+                            background: #0052cc;
+                            width: auto;
+                            display: flex;
+                            min-height: 32px;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 2px 4px;
+                            border-radius: 8px;
+                            padding: 0 8px;
+                            span{
+                                font-size: 14px;
+                                margin: 0 4px;
+                                color: #ffffff;
+                            }
+                            .material-icons{
+                                display: block;
+                                height: 16px;
+                                width: 16px;
+                                line-height: 16px;
+                                text-align: center;
+                                font-size: 14px;
+                                margin-left: 8px;
+                                color: #0052cc;
+                                border-radius: 50%;
+                                background: #ffffff;
+                                cursor: pointer;
+
+                            }
+                        }
+                    }
                 }
             }
             .input-form{
@@ -118,4 +187,10 @@
         height: 200px;
         width: 500px;
     }
+}
+
+ul:focus{
+    outline: none;
+    border: 1px solid red;
+    box-shadow: 0 0 10px #719ECE;
 }

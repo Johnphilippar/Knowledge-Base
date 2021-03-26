@@ -16,8 +16,21 @@ export default function TPPediaForm(props) {
     const { register, handleSubmit, errors, reset, setValue } = useForm();
 
     const [editArticleForm, setEditArticleForm] = useState('')
-    
-    const notify = () => toast.success("Article Successfully Edit", {positon: toast.POSITION.TOP_RIGHT});
+
+    const [tags , setTags] = useState([]);
+
+    const notify = () => toast.success("Article Successfully Edit", { positon: toast.POSITION.TOP_RIGHT });
+
+    const addTags = event => {
+        if (event.target.value != "") {
+            setTags([...tags, event.target.value])
+            event.target.value = "";
+        }
+    };
+
+    const removeTags = removeIndex => {
+        setTags(tags.filter((_, index) => index != removeIndex));
+    };
 
     const handleChange = value => {
         setEditArticleForm(value);
@@ -31,7 +44,7 @@ export default function TPPediaForm(props) {
         // props.setShowLoading(true)
         // const fd = new FormData();
         let artForm = {
-            
+
             KNOWLEDGE_BASE_ID: props.artEdit.KNOWLEDGE_BASE_ID,
             ARTICLE_TITLE: data.article_title,
             POSTED_BY: props.postedUser?.infoObject.given_name + (' ') + props.postedUser?.infoObject.family_name,
@@ -42,7 +55,10 @@ export default function TPPediaForm(props) {
         }
 
         API.putArticle(artForm).then(res => {
+            props.getUpdateList(res.data)
             notify()
+            props.close()
+            reset()
         }).catch(e => console.log(e.message))
     };
 
@@ -53,14 +69,29 @@ export default function TPPediaForm(props) {
                 <div className="form-title">
                     <span>WFM Knowledge Base Form</span>
                 </div>
-                {
-                    console.log(props)
-                }
-                <form className="article-edit-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="article-edit-form" onSubmit={handleSubmit(onSubmit)} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}>
                     <div className="edit-title">
                         <div className="title-edit-form">
                             <label>Article Title :</label>
                             <input className="form-control" type="text" name="article_title" defaultValue={props.artEdit.ARTICLE_TITLE} ref={register} />
+                        </div>
+                        <div className="edit-form-main-tags">
+                            <div className="edit-form-title">
+                                <label>Add Tags :</label>
+                            </div>
+                            <div className="edit-form tags">
+                                <ul>
+                                    {
+                                        tags.map((tag, index) =>
+                                            <li key={index}>
+                                                <span>{tag}</span>
+                                                <i className="material-icons" onClick={() => removeTags(index)}>close</i>
+                                            </li>
+                                        )}
+
+                                </ul>
+                                <input type="text" placeholder="Put some tags here" onKeyUp={e => e.key == "Enter" ? addTags(e) : null} />
+                            </div>
                         </div>
                     </div>
                     <div className="edit-description articletext" style={{ marginBottom: '0', display: 'contents' }}>
@@ -81,7 +112,7 @@ export default function TPPediaForm(props) {
                         />
                     </div>
                     <div className="edit-form-action">
-                        <button className="cancel-btn" style={{ marginRight: "12px" }} onClick={refreshPage} type="button">
+                        <button className="cancel-btn" style={{ marginRight: "12px" }} onClick={props.close} type="button">
                             Close
                     </button>
                         <button className="submit-btn">Submit</button>

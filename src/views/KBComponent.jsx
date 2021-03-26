@@ -71,6 +71,7 @@ export default function KBSearchPage(props) {
 
     useEffect(() => {
         getRecentUploadData()
+
     }, [])
 
     const getArticleData = data => {
@@ -140,7 +141,7 @@ export default function KBSearchPage(props) {
                     </div>
                 </div>
                 <div className="tppedia-feature-item-body">
-                    <KBMainData data={recentUpload[arrayIndex]} article={articleDescription} comment={empComments} user={props.currentUser} />
+                    <KBMainData data={recentUpload[arrayIndex]} updateList={data => getRecentUploadData(data)} article={articleDescription} comment={empComments} user={props.currentUser} />
                 </div>
             </div>
         </div>

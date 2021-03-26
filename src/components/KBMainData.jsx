@@ -66,9 +66,6 @@ export default function TPPediaData(props) {
         });
     };
 
-    useEffect(() => {
-        getArticleDescriptionData()
-    }, [])
 
     return (
         <>
@@ -100,13 +97,41 @@ export default function TPPediaData(props) {
                             }
 
                             <Modal style={{ zIndex: '1000' }} isOpen={editArticleModal}>
-                                <KBFormEdit close={closeEditModal} artEdit={props.data} artDescEdit={props.article} postedUser={props.user} />
+                                <KBFormEdit close={closeEditModal} getUpdateList={props.updateList} artEdit={props.data} artDescEdit={props.article} postedUser={props.user} />
                             </Modal>
 
                         </div>
                     </div>
                     <div className="description">
                         <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.article) }}></p>
+                        <div className="tags-main-data">
+                            <hr />
+                            <div className="tags-bg">
+                                {/* <span>{props.data?.ARTICLE_TAGS}</span> */}
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperssformance</span>
+                                <span>Deployment</span>
+                                <span>Telepaaaerformance</span>
+                                <span>Deployment</span>
+                                <span>Telepessssssrformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperfssssssssssormance</span>
+                                <span>Deplsssoyment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                                <span>Teleperformance</span>
+                                <span>Deployment</span>
+                            </div>
+                        </div>
                     </div>
                     <Comment getComment2={props.comment} getKbID={props.data?.KNOWLEDGE_BASE_ID}></Comment>
                 </div>
